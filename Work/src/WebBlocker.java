@@ -10,8 +10,12 @@ public class WebBlocker {
 	public static void main(String[] args) {
 		
 		File ftb = new File("C:\\Windows\\System32\\drivers\\etc\\hosts");
+		BackupHandler backupHandler = new BackupHandler();
 		
-		int time = 10;
+		backupHandler.makeBackup(ftb);
+		blockWebPages(ftb);
+		
+		int time = 60;
 		long timeStarted = System.nanoTime();
 		
 		while ((System.nanoTime() - timeStarted) / 1000000000 < time) {
@@ -22,6 +26,8 @@ public class WebBlocker {
 		
 		System.out.println((System.nanoTime() - timeStarted) / 1000000000);
 		
+		backupHandler.loadBackup(ftb);
+		
 	}
 	
 	private static void blockWebPages(File file) {
@@ -31,8 +37,8 @@ public class WebBlocker {
 		
 		try {
 			
-			bufferedReader = new BufferedReader(new FileReader("websites-list.txt"));
-			bufferedWriter = new BufferedWriter(new FileWriter(new File(file.getName() + ".backup"), false));
+			bufferedReader = new BufferedReader(new FileReader("websites_list.txt"));
+			bufferedWriter = new BufferedWriter(new FileWriter(file, true));
 			
 			while (bufferedReader.ready()) {
 				

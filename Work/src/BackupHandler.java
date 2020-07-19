@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class BackupHandler {
 
-	private void makeBackup(File file) {
+	public void makeBackup(File file) {
 		
 		BufferedReader bufferedReader = null;
 		BufferedWriter bufferedWriter = null;
@@ -45,7 +45,7 @@ public class BackupHandler {
 		
 	}
 	
-	private void loadBackup(File file) {
+	public void loadBackup(File file) {
 		
 		BufferedReader bufferedReader = null;
 		BufferedWriter bufferedWriter = null;
