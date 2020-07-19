@@ -7,13 +7,7 @@ import java.io.IOException;
 
 public class BackupHandler {
 
-	public static void main(String[] args) {
-		
-		makeBackup(new File("C:\\Windows\\System32\\drivers\\etc\\hosts"));
-
-	}
-
-	private static void makeBackup(File file) {
+	private void makeBackup(File file) {
 		
 		BufferedReader bufferedReader = null;
 		BufferedWriter bufferedWriter = null;
@@ -51,7 +45,7 @@ public class BackupHandler {
 		
 	}
 	
-	private static void loadBackup(File file) {
+	private void loadBackup(File file) {
 		
 		BufferedReader bufferedReader = null;
 		BufferedWriter bufferedWriter = null;
