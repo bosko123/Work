@@ -1,19 +1,19 @@
-import java.awt.EventQueue;
-import java.awt.Toolkit;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.Font;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.awt.event.ActionEvent;
+import java.io.IOException;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 public class TimerWindow extends JFrame {
 
@@ -55,15 +55,7 @@ public class TimerWindow extends JFrame {
 	public TimerWindow() {
 		setResizable(false);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Toolkit toolkit = Toolkit.getDefaultToolkit();
-		int width = 460;
-		int height = 320;
-		
-		int x = (toolkit.getScreenSize().width - width) / 2;
-		int y = (toolkit.getScreenSize().height - height) / 2;
-		
-		setBounds(x, y, width, height);
+		setBounds(100, 100, 460, 320);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -169,8 +161,32 @@ public class TimerWindow extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Edit websites list");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				new WebsiteListWindow().setVisible(true);
+				
+			}
+			
+		});
 		btnNewButton_2.setBounds(10, 235, 150, 23);
 		contentPane.add(btnNewButton_2);
 		
+		File file = new File("websites_list.txt");
+		try {
+			
+			if (!file.exists() || (file.exists() && file.isDirectory()))
+				file.createNewFile();
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+			
+		}
+	
+		setLocationRelativeTo(null);
+		
 	}
+	
 }
