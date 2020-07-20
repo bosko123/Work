@@ -152,9 +152,15 @@ public class TimerWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				File ftb = new File("C:\\Windows\\System32\\drivers\\etc\\hosts");
+				File bu = new File(ftb.getName() + ".backup");
 				BackupHandler backupHandler = new BackupHandler();
 				
-				backupHandler.loadBackup(ftb);
+				if (bu.exists() && !bu.isDirectory()) {
+					
+					backupHandler.loadBackup(ftb);
+					bu.delete();
+					
+				}
 				
 			}
 			
