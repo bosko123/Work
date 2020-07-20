@@ -18,6 +18,10 @@ import java.awt.event.ActionEvent;
 
 public class TimerWindow extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3575854326816620850L;
 	private JPanel contentPane;
 
 	/**
@@ -92,10 +96,10 @@ public class TimerWindow extends JFrame {
 		lblNewLabel_2.setBounds(10, 11, 56, 20);
 		panel_1.add(lblNewLabel_2);
 		
-		JSpinner spinner = new JSpinner();
-		spinner.setModel(new SpinnerNumberModel(0, 0, 24, 1));
-		spinner.setBounds(75, 11, 35, 20);
-		panel_1.add(spinner);
+		JSpinner spHrs = new JSpinner();
+		spHrs.setModel(new SpinnerNumberModel(0, 0, 24, 1));
+		spHrs.setBounds(75, 11, 35, 20);
+		panel_1.add(spHrs);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBounds(282, 42, 120, 42);
@@ -106,10 +110,10 @@ public class TimerWindow extends JFrame {
 		lblNewLabel_4.setBounds(10, 11, 56, 20);
 		panel_3.add(lblNewLabel_4);
 		
-		JSpinner spinner_2 = new JSpinner();
-		spinner_2.setModel(new SpinnerNumberModel(0, 0, 59, 1));
-		spinner_2.setBounds(75, 11, 35, 20);
-		panel_3.add(spinner_2);
+		JSpinner spSec = new JSpinner();
+		spSec.setModel(new SpinnerNumberModel(0, 0, 59, 1));
+		spSec.setBounds(75, 11, 35, 20);
+		panel_3.add(spSec);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(152, 42, 120, 42);
@@ -120,10 +124,10 @@ public class TimerWindow extends JFrame {
 		lblNewLabel_3.setBounds(10, 11, 56, 20);
 		panel_2.add(lblNewLabel_3);
 		
-		JSpinner spinner_1 = new JSpinner();
-		spinner_1.setModel(new SpinnerNumberModel(0, 0, 59, 1));
-		spinner_1.setBounds(75, 11, 35, 20);
-		panel_2.add(spinner_1);
+		JSpinner spMin = new JSpinner();
+		spMin.setModel(new SpinnerNumberModel(0, 0, 59, 1));
+		spMin.setBounds(75, 11, 35, 20);
+		panel_2.add(spMin);
 		
 		JButton btnNewButton = new JButton("Start");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -131,7 +135,12 @@ public class TimerWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				WebBlocker webBlocker = new WebBlocker();
-				webBlocker.startBlocker();
+				
+				int hrs = (int) spHrs.getValue() * 60 * 60;
+				int min = (int) spMin.getValue() * 60;
+				int sec = (int) spSec.getValue();
+				
+				webBlocker.startBlocker(hrs + min + sec);
 				
 			}
 			

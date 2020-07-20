@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class WebBlocker {
 
-	public void startBlocker() {
+	public void startBlocker(int time) {
 		
 		File ftb = new File("C:\\Windows\\System32\\drivers\\etc\\hosts");
 		BackupHandler backupHandler = new BackupHandler();
@@ -15,7 +15,6 @@ public class WebBlocker {
 		backupHandler.makeBackup(ftb);
 		blockWebPages(ftb);
 		
-		int time = 60;
 		long timeStarted = System.nanoTime();
 		
 		while ((System.nanoTime() - timeStarted) / 1000000000 < time) {
