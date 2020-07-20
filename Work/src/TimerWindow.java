@@ -14,6 +14,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JCheckBox;
 
 public class TimerWindow extends JFrame {
 
@@ -22,6 +23,7 @@ public class TimerWindow extends JFrame {
 	 */
 	private static final long serialVersionUID = 3575854326816620850L;
 	private JPanel contentPane;
+	private JCheckBox chckbxNewCheckBox;
 
 	/**
 	 * Launch the application.
@@ -55,7 +57,7 @@ public class TimerWindow extends JFrame {
 	public TimerWindow() {
 		setResizable(false);
 		
-		setBounds(100, 100, 460, 320);
+		setBounds(100, 100, 460, 340);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -124,7 +126,7 @@ public class TimerWindow extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				
-				setVisible(false);
+				setVisible(!chckbxNewCheckBox.isSelected());
 				WebBlocker webBlocker = new WebBlocker();
 				
 				int hrs = (int) spHrs.getValue() * 60 * 60;
@@ -175,6 +177,10 @@ public class TimerWindow extends JFrame {
 		btnNewButton_2.setBounds(10, 235, 150, 23);
 		contentPane.add(btnNewButton_2);
 		
+		chckbxNewCheckBox = new JCheckBox("Hide when running");
+		chckbxNewCheckBox.setBounds(10, 265, 150, 23);
+		contentPane.add(chckbxNewCheckBox);
+		
 		File file = new File("websites_list.txt");
 		try {
 			
@@ -190,5 +196,4 @@ public class TimerWindow extends JFrame {
 		setLocationRelativeTo(null);
 		
 	}
-	
 }
