@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class WebBlocker {
 
-	public static void main(String[] args) {
+	public void startBlocker() {
 		
 		File ftb = new File("C:\\Windows\\System32\\drivers\\etc\\hosts");
 		BackupHandler backupHandler = new BackupHandler();
@@ -30,7 +30,7 @@ public class WebBlocker {
 		
 	}
 	
-	private static void blockWebPages(File file) {
+	private void blockWebPages(File file) {
 		
 		BufferedReader bufferedReader = null;
 		BufferedWriter bufferedWriter = null;
