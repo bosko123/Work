@@ -10,7 +10,11 @@ public class WebBlocker {
 	public void startBlocker(int time) {
 		
 		File ftb = new File("C:\\Windows\\System32\\drivers\\etc\\hosts");
+		File bu = new File(ftb.getName() + ".backup");
 		BackupHandler backupHandler = new BackupHandler();
+		
+		if (bu.exists() && !bu.isDirectory())
+			backupHandler.loadBackup(ftb);
 		
 		backupHandler.makeBackup(ftb);
 		blockWebPages(ftb);
@@ -26,6 +30,7 @@ public class WebBlocker {
 		System.out.println((System.nanoTime() - timeStarted) / 1000000000);
 		
 		backupHandler.loadBackup(ftb);
+		new File(ftb.getName() + ".backup").delete();
 		
 	}
 	
