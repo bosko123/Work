@@ -124,6 +124,7 @@ public class TimerWindow extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				
+				setVisible(false);
 				WebBlocker webBlocker = new WebBlocker();
 				
 				int hrs = (int) spHrs.getValue() * 60 * 60;
@@ -131,6 +132,7 @@ public class TimerWindow extends JFrame {
 				int sec = (int) spSec.getValue();
 				
 				webBlocker.startBlocker(hrs + min + sec);
+				setVisible(true);
 				
 			}
 			
