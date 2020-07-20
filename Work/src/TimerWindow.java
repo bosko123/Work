@@ -55,6 +55,7 @@ public class TimerWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public TimerWindow() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		
 		setBounds(100, 100, 460, 340);
