@@ -1,5 +1,3 @@
-import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
 
@@ -14,6 +12,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.event.ActionEvent;
 
 public class TimerWindow extends JFrame {
@@ -36,14 +35,6 @@ public class TimerWindow extends JFrame {
 				try {
 					
 					TimerWindow frame = new TimerWindow();
-					Toolkit toolkit = Toolkit.getDefaultToolkit();
-					int width = frame.getWidth();
-					int height = frame.getHeight();
-					
-					int x = (toolkit.getScreenSize().width - width) / 2;
-					int y = (toolkit.getScreenSize().height - height) / 2;
-					
-					frame.setBounds(x, y, width, height);
 					frame.setVisible(true);
 					
 				} catch (Exception e) {
@@ -65,7 +56,14 @@ public class TimerWindow extends JFrame {
 		setResizable(false);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 460, 300);
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		int width = 460;
+		int height = 320;
+		
+		int x = (toolkit.getScreenSize().width - width) / 2;
+		int y = (toolkit.getScreenSize().height - height) / 2;
+		
+		setBounds(x, y, width, height);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -147,6 +145,26 @@ public class TimerWindow extends JFrame {
 		});
 		btnNewButton.setBounds(167, 95, 90, 23);
 		panel.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Restore");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				File ftb = new File("C:\\Windows\\System32\\drivers\\etc\\hosts");
+				BackupHandler backupHandler = new BackupHandler();
+				
+				backupHandler.loadBackup(ftb);
+				
+			}
+			
+		});
+		btnNewButton_1.setBounds(284, 235, 150, 23);
+		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Edit websites list");
+		btnNewButton_2.setBounds(10, 235, 150, 23);
+		contentPane.add(btnNewButton_2);
 		
 	}
 }
